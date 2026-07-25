@@ -4,7 +4,7 @@ import { useLocalStorage } from "./useLocalStorage";
 import { v4 as uuidv4 } from "uuid";
 
 export function useProducts() {
-  const [prodcuts, setProducts] = useLocalStorage<Product[]>(KEYS.PRODUCTS, []);
+  const [products, setProducts] = useLocalStorage<Product[]>(KEYS.PRODUCTS, []);
   const [history, setHistory] = useLocalStorage<StockHistoryEntry[]>(
     KEYS.HISTORY,
     [],
@@ -42,7 +42,7 @@ export function useProducts() {
     change: number,
     reason: StockHistoryEntry["reason"],
   ) => {
-    const product = prodcuts.find((p) => p.id === id);
+    const product = products.find((p) => p.id === id);
     if (!product) return;
 
     const newStock = product.stock + change;
@@ -64,7 +64,7 @@ export function useProducts() {
   };
 
   return {
-    prodcuts,
+    products,
     history,
     addProduct,
     updateProduct,
