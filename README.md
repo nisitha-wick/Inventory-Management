@@ -5,7 +5,7 @@ A frontend-only inventory management app built with React, TypeScript, Formik, Y
 ## How to Run Locally
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/nisitha-wick/Inventory-Management.git
 cd inventory-management
 npm install
 npm run dev
