@@ -57,13 +57,13 @@ export default function App() {
         <div className="flex flex-col sm:flex-row sm:justify-end gap-2 mb-6">
           <button
             onClick={() => exportProductsToCSV(filteredProducts)}
-            className="w-full sm:w-auto bg-(--surface) dark:bg-gray-700 text-(--text-h) dark:text-white border border-(--border) dark:border-transparent px-4 py-2.5 rounded-lg font-medium hover:bg-(--bg) dark:hover:bg-gray-600 transition-colors shadow-(--shadow) dark:shadow-sm text-sm sm:text-base whitespace-nowrap"
+            className="w-full sm:w-auto bg-(--surface) dark:bg-gray-700 text-(--text-h) dark:text-white border border-(--border) dark:border-transparent px-4 py-2.5 rounded-lg font-medium hover:bg-(--accent-bg) dark:hover:bg-gray-600 transition-colors shadow-(--shadow) dark:shadow-sm text-sm sm:text-base whitespace-nowrap"
           >
             Export CSV
           </button>
           <button
             onClick={() => setShowCategories(true)}
-            className="w-full sm:w-auto bg-(--surface) dark:bg-gray-700 text-(--text-h) dark:text-white border border-(--border) dark:border-transparent px-4 sm:px-5 py-2.5 rounded-lg font-medium hover:bg-(--bg) dark:hover:bg-gray-600 transition-colors shadow-(--shadow) dark:shadow-sm text-sm sm:text-base whitespace-nowrap"
+            className="w-full sm:w-auto bg-(--surface) dark:bg-gray-700 text-(--text-h) dark:text-white border border-(--border) dark:border-transparent px-4 sm:px-5 py-2.5 rounded-lg font-medium hover:bg-(--accent-bg) dark:hover:bg-gray-600 transition-colors shadow-(--shadow) dark:shadow-sm text-sm sm:text-base whitespace-nowrap"
           >
             Manage Categories
           </button>

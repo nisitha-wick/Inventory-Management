@@ -30,7 +30,7 @@ export default function ProductTable({
     <div className="w-full bg-(--surface) dark:bg-gray-800 rounded-xl shadow-(--shadow) dark:shadow-lg border border-(--border) dark:border-gray-700 overflow-hidden">
       <div className="hidden sm:block overflow-x-auto">
         <table className="w-full text-sm text-left whitespace-nowrap">
-          <thead className="text-xs text-(--text) dark:text-gray-400 uppercase tracking-wider bg-(--bg) dark:bg-gray-900/50 border-b border-(--border) dark:border-gray-700">
+          <thead className="text-xs text-(--text) dark:text-gray-400 uppercase tracking-wider bg-(--surface) dark:bg-gray-900/50 border-b border-(--border) dark:border-gray-700">
             <tr>
               <th className="px-6 py-4 font-semibold">Name</th>
               <th className="px-6 py-4 font-semibold text-center">SKU</th>
@@ -45,7 +45,7 @@ export default function ProductTable({
             {products.map((p) => (
               <tr
                 key={p.id}
-                className="hover:bg-(--bg) dark:hover:bg-gray-700/50 transition-colors duration-200"
+                className="hover:bg-(--social-bg) dark:hover:bg-gray-700/50 transition-colors duration-200"
               >
                 <td className="px-6 py-4 font-medium text-(--text-h) dark:text-white">
                   {p.name}

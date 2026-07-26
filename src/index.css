@@ -5,12 +5,12 @@
 :root {
   --text: #6b6375;
   --text-h: #08060d;
-  --bg: #f0edf7;
-  --surface: #ffffff;
+  --bg: #85e887;;
+  --surface: #d8f6f4;
   --border: #ddd8ea;
   --code-bg: #ebe7f5;  
   --accent: #bb84e6;
-  --accent-bg: rgba(170, 59, 255, 0.08);
+  --accent-bg: rgba(194, 131, 243, 0.08);
   --accent-border: rgba(156, 103, 196, 0.35);
   --social-bg: rgba(244, 243, 236, 0.5);
   --shadow:
