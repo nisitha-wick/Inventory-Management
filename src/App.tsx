@@ -9,6 +9,7 @@ import CategoryManager from "./components/CategoryManager";
 import StockAdjustModal from "./components/StockAdjustModal";
 import { X } from "lucide-react";
 import SearchFilterBar from "./components/SearchFilterBar";
+import { exportProductsToCSV } from "./utils/csv";
 
 export default function App() {
   const { products, addProduct, updateProduct, deleteProduct, adjustStock } =
@@ -44,6 +45,12 @@ export default function App() {
       <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-6">
         <h1 className="text-xl sm:text-2xl font-bold">Inventory Management</h1>
         <div className="flex gap-2 sm:gap-3 w-full sm:w-auto">
+          <button
+            onClick={() => exportProductsToCSV(filteredProducts)}
+            className="flex-1 sm:flex-none bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white px-4 py-2.5 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors shadow-sm text-sm sm:text-base"
+          >
+            Export CSV
+          </button>
           <button
             onClick={() => setShowCategories(true)}
             className="flex-1 sm:flex-none bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white px-4 sm:px-5 py-2.5 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors shadow-sm text-sm sm:text-base"
