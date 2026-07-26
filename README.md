@@ -41,3 +41,8 @@ npm run dev
 
 **Tech Stack**
 React · TypeScript · Formik · Yup · Tailwind CSS · Vite
+
+## Screenshots
+(./screenshots/image.png)
+(./screenshots/Screenshot 2026-07-26 163329.png)
+(./screenshots/Screenshot 2026-07-26 163357.png)
