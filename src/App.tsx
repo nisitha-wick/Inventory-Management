@@ -6,14 +6,19 @@ import type { Product } from "./types";
 import ProductTable from "./components/ProductTable";
 import Dashboard from "./components/Dashboard";
 import CategoryManager from "./components/CategoryManager";
+import StockAdjustModal from "./components/StockAdjustModal";
 import { X } from "lucide-react";
 
 export default function App() {
-  const { products, addProduct, updateProduct, deleteProduct } = useProducts();
+  const { products, addProduct, updateProduct, deleteProduct, adjustStock } =
+    useProducts();
   const { categories, addCategory } = useCategories();
   const [editingProduct, setEditingProduct] = useState<Product | undefined>();
   const [showForm, setShowForm] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
+  const [stockModalProduct, setStockModalProduct] = useState<
+    Product | undefined
+  >();
 
   return (
     <div className="max-w-5xl mx-auto p-4 sm:p-8">
@@ -48,9 +53,19 @@ export default function App() {
             setShowForm(true);
           }}
           onDelete={deleteProduct}
-          onAdjustStock={() => console.log("Not built yet")}
+          onAdjustStock={setStockModalProduct}
         />
       </div>
+
+      {stockModalProduct && (
+        <StockAdjustModal
+          product={stockModalProduct}
+          onAdjust={(change, reason) =>
+            adjustStock(stockModalProduct.id, change, reason)
+          }
+          onClose={() => setStockModalProduct(undefined)}
+        />
+      )}
 
       {showForm && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
