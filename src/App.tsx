@@ -41,12 +41,12 @@ export default function App() {
 
   return (
     <div className="max-w-5xl mx-auto p-4 sm:p-8">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Inventory Management</h1>
-        <div className="flex gap-3 w-full sm:w-auto">
+      <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-6">
+        <h1 className="text-xl sm:text-2xl font-bold">Inventory Management</h1>
+        <div className="flex gap-2 sm:gap-3 w-full sm:w-auto">
           <button
             onClick={() => setShowCategories(true)}
-            className="flex-1 sm:flex-none bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white px-5 py-2.5 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors shadow-sm"
+            className="flex-1 sm:flex-none bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white px-4 sm:px-5 py-2.5 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors shadow-sm text-sm sm:text-base"
           >
             Manage Categories
           </button>
@@ -55,7 +55,7 @@ export default function App() {
               setEditingProduct(undefined);
               setShowForm(true);
             }}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            className="flex-1 sm:flex-none bg-blue-600 text-white px-4 py-2.5 rounded-lg hover:bg-blue-700 text-sm sm:text-base"
           >
             + Add Product
           </button>
@@ -74,17 +74,15 @@ export default function App() {
         categories={categories}
       />
 
-      <div className="bg-white rounded-lg shadow">
-        <ProductTable
-          products={filteredProducts}
-          onEdit={(p) => {
-            setEditingProduct(p);
-            setShowForm(true);
-          }}
-          onDelete={deleteProduct}
-          onAdjustStock={setStockModalProduct}
-        />
-      </div>
+      <ProductTable
+        products={filteredProducts}
+        onEdit={(p) => {
+          setEditingProduct(p);
+          setShowForm(true);
+        }}
+        onDelete={deleteProduct}
+        onAdjustStock={setStockModalProduct}
+      />
 
       {stockModalProduct && (
         <StockAdjustModal
@@ -98,7 +96,7 @@ export default function App() {
 
       {showForm && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
-          <div className="w-full max-w-md">
+          <div className="w-full max-w-md max-h-[90vh] overflow-y-auto">
             <ProductForm
               categories={categories}
               initialData={editingProduct}
@@ -115,7 +113,7 @@ export default function App() {
 
       {showCategories && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-in fade-in duration-200">
-          <div className="w-full max-w-lg relative">
+          <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto relative">
             <button
               onClick={() => setShowCategories(false)}
               className="absolute top-4 right-4 z-10 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors bg-gray-100 dark:bg-gray-700 rounded-full p-1.5 shadow-sm"

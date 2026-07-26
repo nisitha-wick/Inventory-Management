@@ -15,8 +15,8 @@ export default function ProductTable({
 }: ProductTableProps) {
   if (!products || products.length === 0) {
     return (
-      <div className="w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg border-gray-100 dark:border-gray-700 p-12 text-center">
-        <p className="text-gray-500 dark:text-gray-400 font-medium text-lg">
+      <div className="w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg border-gray-100 dark:border-gray-700 p-8 sm:p-12 text-center">
+        <p className="text-gray-500 dark:text-gray-400 font-medium text-base sm:text-lg">
           No products found.
         </p>
         <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">
@@ -28,7 +28,7 @@ export default function ProductTable({
 
   return (
     <div className="w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden">
-      <div className="overflow-x-auto">
+      <div className="hidden sm:block overflow-x-auto">
         <table className="w-full text-sm text-left whitespace-nowrap">
           <thead className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider bg-gray-50 dark:bg-gray-900/50 border-b border-gray-100 dark:border-gray-700">
             <tr>
@@ -101,6 +101,62 @@ export default function ProductTable({
             ))}
           </tbody>
         </table>
+      </div>
+
+      <div className="sm:hidden divide-y divide-gray-100 dark:divide-gray-700">
+        {products.map((p) => (
+          <div key={p.id} className="p-4">
+            <div className="flex justify-between items-start gap-2 mb-1.5">
+              <p className="font-medium text-gray-900 dark:text-white">
+                {p.name}
+              </p>
+              <span
+                className={`shrink-0 inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold ${
+                  p.stock > 0
+                    ? "bg-green-100 text-green-700 dark:bg-green-500/10 dark:text-green-400"
+                    : "bg-red-100 text-red-700 dark:bg-red-500/10 dark:text-red-400"
+                }`}
+              >
+                {p.stock > 0 ? "In Stock" : "Out of Stock"}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-xs font-mono text-gray-500 dark:text-gray-400">
+                {p.sku}
+              </span>
+              <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-medium">
+                {p.category}
+              </span>
+            </div>
+
+            <div className="flex justify-between text-sm text-gray-700 dark:text-gray-300 mb-3">
+              <span className="font-medium">${p.price.toFixed(2)}</span>
+              <span>Stock: {p.stock}</span>
+            </div>
+
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={() => onAdjustStock(p)}
+                className="flex-1 px-3 py-2 rounded-md text-xs font-medium text-blue-600 bg-blue-50 dark:text-blue-400 dark:bg-blue-900/30 transition-colors"
+              >
+                Stock
+              </button>
+              <button
+                onClick={() => onEdit(p)}
+                className="flex-1 px-3 py-2 rounded-md text-xs font-medium text-amber-600 bg-amber-50 dark:text-amber-400 dark:bg-amber-900/30 transition-colors"
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => onDelete(p.id)}
+                className="flex-1 px-3 py-2 rounded-md text-xs font-medium text-red-600 bg-red-50 dark:text-red-400 dark:bg-red-900/30 transition-colors"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

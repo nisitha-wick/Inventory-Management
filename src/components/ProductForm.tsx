@@ -60,9 +60,9 @@ export default function ProductForm({
       }}
     >
       {({ isSubmitting }) => (
-        <Form className="w-full max-w-2xl mx-auto space-y-6 bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700">
-          <div className="border-b border-gray-200 dark:border-gray-700 pb-4 mb-6">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+        <Form className="w-full max-w-2xl mx-auto space-y-5 sm:space-y-6 bg-white dark:bg-gray-800 p-5 sm:p-8 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700">
+          <div className="border-b border-gray-200 dark:border-gray-700 pb-4 mb-4 sm:mb-6">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
               {isEdit ? "Edit Product" : "Add New Product"}
             </h2>
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
@@ -72,7 +72,7 @@ export default function ProductForm({
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             <div className="md:col-span-2">
               <label htmlFor="name" className={labelStyles}>
                 Product Name
@@ -151,7 +151,7 @@ export default function ProductForm({
             </div>
           </div>
 
-          <div className="flex items-center justify-end gap-3 pt-6 border-t border-gray-100 dark:border-gray-700 mt-2">
+          <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3 pt-6 border-t border-gray-100 dark:border-gray-700 mt-2">
             <button
               type="button"
               onClick={onCancel}
@@ -162,7 +162,7 @@ export default function ProductForm({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-blue-700 focus:ring-4 focus:ring-blue-500/50 active:scale-95 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              className="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-blue-700 focus:ring-4 focus:ring-blue-500/50 active:scale-95 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {isEdit ? "Save Changes" : "Create Product"}
             </button>
