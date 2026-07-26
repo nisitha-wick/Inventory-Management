@@ -19,7 +19,7 @@ export default function Dashboard({ products, categories }: DashboardProps) {
     {
       label: "Total Products",
       value: totalProducts,
-      valueColor: "text-gray-900 dark:text-white",
+      valueColor: "text-(--text-h) dark:text-white",
     },
     {
       label: "Inventory Value",
@@ -32,7 +32,7 @@ export default function Dashboard({ products, categories }: DashboardProps) {
       valueColor:
         outOfStock > 0
           ? "text-red-600 dark:text-red-400"
-          : "text-gray-900 dark:text-white",
+          : "text-(--text-h) dark:text-white",
     },
   ];
 
@@ -42,9 +42,9 @@ export default function Dashboard({ products, categories }: DashboardProps) {
         {stats.map((s) => (
           <div
             key={s.label}
-            className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-4 sm:p-6 flex flex-col justify-center"
+            className="bg-(--surface) dark:bg-gray-800 rounded-xl shadow-(--shadow) dark:shadow-sm border border-(--border) dark:border-gray-700 p-4 sm:p-6 flex flex-col justify-center"
           >
-            <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1.5 sm:mb-2">
+            <p className="text-xs font-bold text-(--text) dark:text-gray-400 uppercase tracking-wider mb-1.5 sm:mb-2">
               {s.label}
             </p>
             <p
@@ -56,8 +56,8 @@ export default function Dashboard({ products, categories }: DashboardProps) {
         ))}
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-4 sm:p-6">
-        <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-3 sm:mb-4">
+      <div className="bg-(--surface) dark:bg-gray-800 rounded-xl shadow-(--shadow) dark:shadow-sm border border-(--border) dark:border-gray-700 p-4 sm:p-6">
+        <h3 className="text-sm font-bold text-(--text-h) dark:text-white uppercase tracking-wider mb-3 sm:mb-4">
           Products per Category
         </h3>
         {countByCategory.length > 0 ? (
@@ -65,19 +65,19 @@ export default function Dashboard({ products, categories }: DashboardProps) {
             {countByCategory.map((c) => (
               <div
                 key={c.name}
-                className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-full transition-colors"
+                className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 bg-(--accent-bg) dark:bg-gray-700/50 border border-(--accent-border) dark:border-gray-600 rounded-full transition-colors"
               >
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-200">
+                <span className="text-sm font-medium text-(--text-h) dark:text-gray-200">
                   {c.name}
                 </span>
-                <span className="flex items-center justify-center bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-100 text-xs font-bold px-2 py-0.5 rounded-full">
+                <span className="flex items-center justify-center bg-(--accent) text-white dark:bg-gray-600 dark:text-gray-100 text-xs font-bold px-2 py-0.5 rounded-full">
                   {c.count}
                 </span>
               </div>
             ))}
           </div>
         ) : (
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-sm text-(--text) dark:text-gray-400">
             No categories available.
           </p>
         )}

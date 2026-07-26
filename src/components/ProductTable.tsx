@@ -15,11 +15,11 @@ export default function ProductTable({
 }: ProductTableProps) {
   if (!products || products.length === 0) {
     return (
-      <div className="w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg border-gray-100 dark:border-gray-700 p-8 sm:p-12 text-center">
-        <p className="text-gray-500 dark:text-gray-400 font-medium text-base sm:text-lg">
+      <div className="w-full bg-(--surface) dark:bg-gray-800 rounded-xl shadow-(--shadow) dark:shadow-lg border border-(--border) dark:border-gray-700 p-8 sm:p-12 text-center">
+        <p className="text-(--text) dark:text-gray-400 font-medium text-base sm:text-lg">
           No products found.
         </p>
-        <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">
+        <p className="text-sm text-(--text) opacity-70 dark:text-gray-500 mt-2">
           Try adjusting the filters or click "Add Product" to get started.
         </p>
       </div>
@@ -27,10 +27,10 @@ export default function ProductTable({
   }
 
   return (
-    <div className="w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden">
+    <div className="w-full bg-(--surface) dark:bg-gray-800 rounded-xl shadow-(--shadow) dark:shadow-lg border border-(--border) dark:border-gray-700 overflow-hidden">
       <div className="hidden sm:block overflow-x-auto">
         <table className="w-full text-sm text-left whitespace-nowrap">
-          <thead className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider bg-gray-50 dark:bg-gray-900/50 border-b border-gray-100 dark:border-gray-700">
+          <thead className="text-xs text-(--text) dark:text-gray-400 uppercase tracking-wider bg-(--bg) dark:bg-gray-900/50 border-b border-(--border) dark:border-gray-700">
             <tr>
               <th className="px-6 py-4 font-semibold">Name</th>
               <th className="px-6 py-4 font-semibold text-center">SKU</th>
@@ -41,27 +41,27 @@ export default function ProductTable({
               <th className="px-6 py-4 font-semibold text-center">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
+          <tbody className="divide-y divide-(--border) dark:divide-gray-700">
             {products.map((p) => (
               <tr
                 key={p.id}
-                className="hover:bg-gray-50/80 dark:hover:bg-gray-700/50 transition-colors duration-200"
+                className="hover:bg-(--bg) dark:hover:bg-gray-700/50 transition-colors duration-200"
               >
-                <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">
+                <td className="px-6 py-4 font-medium text-(--text-h) dark:text-white">
                   {p.name}
                 </td>
-                <td className="px-6 py-4 text-gray-500 dark:text-gray-400 font-mono text-xs">
+                <td className="px-6 py-4 text-(--text) dark:text-gray-400 font-mono text-xs">
                   {p.sku}
                 </td>
                 <td className="px-6 py-4">
-                  <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-medium">
+                  <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-(--code-bg) dark:bg-gray-700 text-(--text) dark:text-gray-300 text-xs font-medium">
                     {p.category}
                   </span>
                 </td>
-                <td className="px-6 py-4 text-gray-700 dark:text-gray-300 font-medium">
+                <td className="px-6 py-4 text-(--text-h) dark:text-gray-300 font-medium">
                   ${p.price.toFixed(2)}
                 </td>
-                <td className="px-6 py-4 text-gray-700 dark:text-gray-300">
+                <td className="px-6 py-4 text-(--text-h) dark:text-gray-300">
                   {p.stock}
                 </td>
                 <td className="px-6 py-4">
@@ -79,7 +79,7 @@ export default function ProductTable({
                   <div className="flex items-center justify-end gap-1.5">
                     <button
                       onClick={() => onAdjustStock(p)}
-                      className="px-3 py-1.5 rounded-md text-xs font-medium text-blue-600 hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-blue-900/30 transition-colors"
+                      className="px-3 py-1.5 rounded-md text-xs font-medium text-(--accent) hover:bg-(--accent-bg) dark:text-blue-400 dark:hover:bg-blue-900/30 transition-colors"
                     >
                       Stock
                     </button>
@@ -103,11 +103,11 @@ export default function ProductTable({
         </table>
       </div>
 
-      <div className="sm:hidden divide-y divide-gray-100 dark:divide-gray-700">
+      <div className="sm:hidden divide-y divide-(--border) dark:divide-gray-700">
         {products.map((p) => (
           <div key={p.id} className="p-4">
             <div className="flex justify-between items-start gap-2 mb-1.5">
-              <p className="font-medium text-gray-900 dark:text-white">
+              <p className="font-medium text-(--text-h) dark:text-white">
                 {p.name}
               </p>
               <span
@@ -122,15 +122,15 @@ export default function ProductTable({
             </div>
 
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-xs font-mono text-gray-500 dark:text-gray-400">
+              <span className="text-xs font-mono text-(--text) dark:text-gray-400">
                 {p.sku}
               </span>
-              <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-medium">
+              <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-(--code-bg) dark:bg-gray-700 text-(--text) dark:text-gray-300 text-xs font-medium">
                 {p.category}
               </span>
             </div>
 
-            <div className="flex justify-between text-sm text-gray-700 dark:text-gray-300 mb-3">
+            <div className="flex justify-between text-sm text-(--text-h) dark:text-gray-300 mb-3">
               <span className="font-medium">${p.price.toFixed(2)}</span>
               <span>Stock: {p.stock}</span>
             </div>
@@ -138,7 +138,7 @@ export default function ProductTable({
             <div className="flex items-center gap-1.5">
               <button
                 onClick={() => onAdjustStock(p)}
-                className="flex-1 px-3 py-2 rounded-md text-xs font-medium text-blue-600 bg-blue-50 dark:text-blue-400 dark:bg-blue-900/30 transition-colors"
+                className="flex-1 px-3 py-2 rounded-md text-xs font-medium text-(--accent) bg-(--accent-bg) dark:text-blue-400 dark:bg-blue-900/30 transition-colors"
               >
                 Stock
               </button>

@@ -10,7 +10,7 @@ export default function ThemeToggle({ isDark, onToggle }: ThemeToggleProps) {
     <button
       onClick={onToggle}
       aria-label="Toggle dark mode"
-      className="p-2.5 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors shadow-sm"
+      className="p-2.5 rounded-lg bg-(--surface) dark:bg-gray-700 text-(--text-h) dark:text-white border border-(--border) dark:border-transparent hover:bg-(--bg) dark:hover:bg-gray-600 transition-colors shadow-(--shadow) dark:shadow-sm"
     >
       {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
     </button>

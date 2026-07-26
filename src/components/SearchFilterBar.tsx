@@ -21,18 +21,21 @@ export default function SearchFilterBar({
   onStockFilterChange,
   categories,
 }: SearchFilterBarProps) {
+  const fieldStyles =
+    "bg-(--surface) dark:bg-gray-900 border border-(--border) dark:border-gray-600 rounded-lg px-3 py-2 text-(--text-h) dark:text-gray-100 focus:ring-2 focus:ring-(--accent) focus:border-(--accent) transition-colors duration-200 outline-none";
+
   return (
     <div className="flex flex-col sm:flex-row gap-3 mb-4">
       <input
         value={search}
         onChange={(e) => onSearchChange(e.target.value)}
-        placeholder="Search by name or SKU..."
-        className="flex-1 border rounded px-3 py-2"
+        placeholder="Search by name or SKU"
+        className={`flex-1 ${fieldStyles}`}
       />
       <select
         value={category}
         onChange={(e) => onCategoryChange(e.target.value)}
-        className="border rounded px-3 py-2"
+        className={fieldStyles}
       >
         <option value="">All Categories</option>
         {categories.map((c) => (
@@ -44,7 +47,7 @@ export default function SearchFilterBar({
       <select
         value={stockFilter}
         onChange={(e) => onStockFilterChange(e.target.value as StockFilter)}
-        className="border rounded px-3 py-2"
+        className={fieldStyles}
       >
         <option value="all">All Stock</option>
         <option value="in-stock">In Stock</option>

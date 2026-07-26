@@ -5,18 +5,19 @@
 :root {
   --text: #6b6375;
   --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
+  --bg: #f0edf7;
+  --surface: #ffffff;
+  --border: #ddd8ea;
+  --code-bg: #ebe7f5;  
+  --accent: #bb84e6;
+  --accent-bg: rgba(170, 59, 255, 0.08);
+  --accent-border: rgba(156, 103, 196, 0.35);
   --social-bg: rgba(244, 243, 236, 0.5);
   --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+    rgba(23, 10, 40, 0.06) 0 1px 2px 0,
+    rgba(23, 10, 40, 0.08) 0 8px 24px -8px;
+  --sans: "Poppins", system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: "Poppins", system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
