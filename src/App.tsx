@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import ProductForm from "./components/ProductForm";
 import { useCategories } from "./hooks/useCategories";
 import { useProducts } from "./hooks/useProducts";
-import type { Product } from "./types";
+import type { Product, StockFilter } from "./types";
 import ProductTable from "./components/ProductTable";
 import Dashboard from "./components/Dashboard";
 import CategoryManager from "./components/CategoryManager";
 import StockAdjustModal from "./components/StockAdjustModal";
 import { X } from "lucide-react";
+import SearchFilterBar from "./components/SearchFilterBar";
 
 export default function App() {
   const { products, addProduct, updateProduct, deleteProduct, adjustStock } =
@@ -19,6 +20,24 @@ export default function App() {
   const [stockModalProduct, setStockModalProduct] = useState<
     Product | undefined
   >();
+
+  const [search, setSearch] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState("");
+  const [stockFilter, setStockFilter] = useState<StockFilter>("all");
+
+  const filteredProducts = useMemo(() => {
+    return products.filter((p) => {
+      const matchesSearch =
+        p.name.toLowerCase().includes(search.toLowerCase()) ||
+        p.sku.toLowerCase().includes(search.toLowerCase());
+      const matchesCategory = !categoryFilter || p.category === categoryFilter;
+      const matchesStock =
+        stockFilter === "all" ||
+        (stockFilter === "in-stock" && p.stock > 0) ||
+        (stockFilter === "out-of-stock" && p.stock === 0);
+      return matchesSearch && matchesCategory && matchesStock;
+    });
+  }, [products, search, categoryFilter, stockFilter]);
 
   return (
     <div className="max-w-5xl mx-auto p-4 sm:p-8">
@@ -45,9 +64,19 @@ export default function App() {
 
       <Dashboard products={products} categories={categories} />
 
+      <SearchFilterBar
+        search={search}
+        onSearchChange={setSearch}
+        category={categoryFilter}
+        onCategoryChange={setCategoryFilter}
+        stockFilter={stockFilter}
+        onStockFilterChange={setStockFilter}
+        categories={categories}
+      />
+
       <div className="bg-white rounded-lg shadow">
         <ProductTable
-          products={products}
+          products={filteredProducts}
           onEdit={(p) => {
             setEditingProduct(p);
             setShowForm(true);
