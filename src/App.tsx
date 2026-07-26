@@ -10,6 +10,8 @@ import StockAdjustModal from "./components/StockAdjustModal";
 import { X } from "lucide-react";
 import SearchFilterBar from "./components/SearchFilterBar";
 import { exportProductsToCSV } from "./utils/csv";
+import { useTheme } from "./hooks/useTheme";
+import ThemeToggle from "./components/ThemeToggle";
 
 export default function App() {
   const { products, addProduct, updateProduct, deleteProduct, adjustStock } =
@@ -25,6 +27,8 @@ export default function App() {
   const [search, setSearch] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
   const [stockFilter, setStockFilter] = useState<StockFilter>("all");
+
+  const { isDark, toggleTheme } = useTheme();
 
   const filteredProducts = useMemo(() => {
     return products.filter((p) => {
@@ -42,31 +46,33 @@ export default function App() {
 
   return (
     <div className="max-w-5xl mx-auto p-4 sm:p-8">
-      <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-6">
+      <div className="flex items-center justify-between mb-6">
         <h1 className="text-xl sm:text-2xl font-bold">Inventory Management</h1>
-        <div className="flex gap-2 sm:gap-3 w-full sm:w-auto">
-          <button
-            onClick={() => exportProductsToCSV(filteredProducts)}
-            className="flex-1 sm:flex-none bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white px-4 py-2.5 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors shadow-sm text-sm sm:text-base"
-          >
-            Export CSV
-          </button>
-          <button
-            onClick={() => setShowCategories(true)}
-            className="flex-1 sm:flex-none bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white px-4 sm:px-5 py-2.5 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors shadow-sm text-sm sm:text-base"
-          >
-            Manage Categories
-          </button>
-          <button
-            onClick={() => {
-              setEditingProduct(undefined);
-              setShowForm(true);
-            }}
-            className="flex-1 sm:flex-none bg-blue-600 text-white px-4 py-2.5 rounded-lg hover:bg-blue-700 text-sm sm:text-base"
-          >
-            + Add Product
-          </button>
-        </div>
+        <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
+      </div>
+
+      <div className="flex flex-col sm:flex-row sm:justify-end gap-2 mb-6">
+        <button
+          onClick={() => exportProductsToCSV(filteredProducts)}
+          className="w-full sm:w-auto bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white px-4 py-2.5 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors shadow-sm text-sm sm:text-base whitespace-nowrap"
+        >
+          Export CSV
+        </button>
+        <button
+          onClick={() => setShowCategories(true)}
+          className="w-full sm:w-auto bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white px-4 sm:px-5 py-2.5 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors shadow-sm text-sm sm:text-base whitespace-nowrap"
+        >
+          Manage Categories
+        </button>
+        <button
+          onClick={() => {
+            setEditingProduct(undefined);
+            setShowForm(true);
+          }}
+          className="w-full sm:w-auto bg-blue-600 text-white px-4 py-2.5 rounded-lg hover:bg-blue-700 text-sm sm:text-base whitespace-nowrap"
+        >
+          + Add Product
+        </button>
       </div>
 
       <Dashboard products={products} categories={categories} />
