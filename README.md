@@ -43,6 +43,12 @@ npm run dev
 React · TypeScript · Formik · Yup · Tailwind CSS · Vite
 
 ## Screenshots
-(./screenshots/image.png)
-(./screenshots/Screenshot 2026-07-26 163329.png)
-(./screenshots/Screenshot 2026-07-26 163357.png)
+
+### Dashboard (Light Mode)
+![Dashboard light mode](./screenshots/lightMode.png)
+
+### Dashboard (Dark Mode)
+![Dashboard dark mode](./screenshots/dashboard.png)
+
+### Add Product
+![Product Form](./screenshots/addProduct.png)
